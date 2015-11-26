@@ -30,7 +30,7 @@ public interface ClientChangeListener {
      * @param message
      *            The new message received
      */
-    void messageReceived(Message message);
+    void messageReceived(String username, String message);
 
 
     /**
@@ -40,4 +40,7 @@ public interface ClientChangeListener {
      *            text of error message to display
      */
     void displayErrorMessage(String message);
+
+
+	void messageReceived(Message message);
 }

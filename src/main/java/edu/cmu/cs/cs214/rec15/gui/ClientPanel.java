@@ -210,6 +210,7 @@ public class ClientPanel extends JPanel implements ClientChangeListener {
                 msg.getContent()); 
         this.chatArea.append(newText);
         chatArea.setCaretPosition(chatArea.getDocument().getLength());
+
     }
 
 
@@ -229,5 +230,8 @@ public class ClientPanel extends JPanel implements ClientChangeListener {
                 JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
                 options, options[0]);
     }
+
+
+	
 
 }
