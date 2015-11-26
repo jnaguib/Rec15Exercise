@@ -173,10 +173,6 @@ public class ChatServerImpl extends Thread implements ChatServer {
 
 
         private void onJoin(String username) {
-            // TODO: Notify all clients that the given user has connected to the
-            // server. HINT: This will look very similar to onNewMessage but
-            // instead of notifying the clients of the new message, it will
-            // notify them of a joining user.
         	Message m = new Message(username + "is in the house !!!",username);
         	synchronized (clients) {
                 for (Socket s : clients) {
@@ -190,7 +186,6 @@ public class ChatServerImpl extends Thread implements ChatServer {
                 }
             }
         }
-
 
         /**
          * Callback for when a message is received by the server. Notifies all
