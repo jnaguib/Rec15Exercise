@@ -167,12 +167,22 @@ public class ChatServerImpl extends Thread implements ChatServer {
         }
 
 
-<<<<<<< HEAD
-=======
+
         // TODO: Notify all clients when a new client joins the chat server.
         // This probably is made easy with a call back for when a client joins.
-
->>>>>>> master
+		public void onNewClient(){
+			synchronized(clients){
+				for (Socket s : clients) {
+                    try {
+                        ObjectOutputStream out = new ObjectOutputStream(
+                                s.getOutputStream());
+                        out.writeObject("new client added");
+                    } catch (IOException e) {
+                        Log.e(TAG, "added Client not added.");
+                    }
+                }
+			}
+		}
         /**
          * Callback for when a message is received by the server. Notifies all
          * clients about the new message received
