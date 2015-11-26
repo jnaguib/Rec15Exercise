@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -184,6 +185,8 @@ public class ChatServerImpl extends Thread implements ChatServer {
             // Synchronize because we are iterating through all clients in a
             // thread
             synchronized (clients) {
+            	Date receivedAt = new Date();
+				msg.setServerTimestamp(receivedAt);
                 for (Socket s : clients) {
                     try {
                         ObjectOutputStream out = new ObjectOutputStream(
