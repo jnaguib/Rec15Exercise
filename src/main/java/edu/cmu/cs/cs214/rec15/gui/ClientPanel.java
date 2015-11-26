@@ -232,6 +232,13 @@ public class ClientPanel extends JPanel implements ClientChangeListener {
     }
 
 
+	@Override
+	public void messageReceived(String username, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 
 }
