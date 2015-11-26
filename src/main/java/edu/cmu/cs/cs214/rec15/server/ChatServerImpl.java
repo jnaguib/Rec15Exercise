@@ -46,6 +46,7 @@ public class ChatServerImpl extends Thread implements ChatServer {
 
     @Override
     public void run() {
+    	ObjectInputStream in;
         try {
             ServerSocket serverSocket = null;
             try {
@@ -66,6 +67,7 @@ public class ChatServerImpl extends Thread implements ChatServer {
                             clientSocket.getPort()));
                     clients.add(clientSocket);
                     mExecutor.execute(new ClientHandler(clientSocket));
+                    
                 } catch (IOException e) {
                     Log.e(TAG,
                             "Error while listening for incoming connections.",
@@ -175,6 +177,18 @@ public class ChatServerImpl extends Thread implements ChatServer {
             // server. HINT: This will look very similar to onNewMessage but
             // instead of notifying the clients of the new message, it will
             // notify them of a joining user.
+        	Message m = new Message(username + "is in the house !!!",username);
+        	synchronized (clients) {
+                for (Socket s : clients) {
+                    try {
+                        ObjectOutputStream out = new ObjectOutputStream(
+                                s.getOutputStream());
+                        out.writeObject(m);
+                    } catch (IOException e) {
+                        Log.e(TAG, "Unable to send message to client.");
+                    }
+                }
+            }
         }
 
 
