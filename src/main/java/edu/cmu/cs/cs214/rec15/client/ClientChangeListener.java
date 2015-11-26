@@ -1,5 +1,7 @@
 package edu.cmu.cs.cs214.rec15.client;
 
+import edu.cmu.cs.cs214.rec15.server.Message;
+
 /**
  * ClientChangeListener is a class meant to be implemented by any GUIs being
  * made for the ChatClient
@@ -25,10 +27,8 @@ public interface ClientChangeListener {
     /**
      * Called when a new message is received
      * 
-     * @param username
-     *            of client who sent message
      * @param message
-     *            text of new message being received
+     *            The new message received
      */
     void messageReceived(String username, String message);
 
@@ -40,4 +40,7 @@ public interface ClientChangeListener {
      *            text of error message to display
      */
     void displayErrorMessage(String message);
+
+
+	void messageReceived(Message message);
 }

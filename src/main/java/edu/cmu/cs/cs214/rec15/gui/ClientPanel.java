@@ -21,6 +21,7 @@ import javax.swing.SwingUtilities;
 
 import edu.cmu.cs.cs214.rec15.client.ChatClient;
 import edu.cmu.cs.cs214.rec15.client.ClientChangeListener;
+import edu.cmu.cs.cs214.rec15.server.Message;
 
 /**
  * ClientPanel a GUI for the ChatClient interface
@@ -198,8 +199,7 @@ public class ClientPanel extends JPanel implements ClientChangeListener {
     @Override
     public void messageReceived(String username, String message) {
         String newText = String.format(" %s: %s%n", username, message);
-        this.chatArea.append(newText);
-        chatArea.setCaretPosition(chatArea.getDocument().getLength());
+
     }
 
 
@@ -219,5 +219,12 @@ public class ClientPanel extends JPanel implements ClientChangeListener {
                 JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
                 options, options[0]);
     }
+
+
+	@Override
+	public void messageReceived(Message message) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

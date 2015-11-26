@@ -17,6 +17,7 @@ public class Message implements Serializable {
     private Date serverTimestamp;
 
 
+
     /**
      * Constructor to create a message
      * 
